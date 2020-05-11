@@ -58,6 +58,13 @@ class Grover
             browser = await puppeteer.launch(launchParams);
             const page = await browser.newPage();
 
+            // Enable Javascript
+            const enable_js = options.enable_js; delete options.enable_js
+            if (enable_js != undefined){
+              await page.setJavaScriptEnabled(enable_js)
+             }
+              
+              
             // Basic auth
             const username = options.username; delete options.username
             const password = options.password; delete options.password
